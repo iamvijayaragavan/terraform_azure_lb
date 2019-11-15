@@ -1,11 +1,7 @@
-data "azurerm_resource_group" "current" {
-  name = "${var.resource_group_name}"
-}
-
 resource "azurerm_network_interface" "current" {
-  name                      = "${var.vm_name}-nic"
+  name                      = "${var.virtual_machine_name}-nic"
   location                  = "${var.location}"
-  resource_group_name       = "${data.azurerm_resource_group.current.name}"
+  resource_group_name       = "${var.resource_group_name}"
 
   ip_configuration {
     name                          = "IpConfiguration"
@@ -18,8 +14,8 @@ resource "azurerm_network_interface" "current" {
 resource "azurerm_virtual_machine" "current" {
   name                  = "${var.virtual_machine_name}"
   location              = "${var.location}"
-  resource_group_name   = "${data.azurerm_resource_group.current.name}"
-  network_interface_ids = "${azurerm_network_interface.current.id}"
+  resource_group_name   = "${var.resource_group_name}"
+  network_interface_ids = ["${azurerm_network_interface.current.id}"]
   vm_size               = "${var.vm_size}"
   delete_os_disk_on_termination = true
 
@@ -33,7 +29,6 @@ resource "azurerm_virtual_machine" "current" {
   storage_os_disk {
     name              = "${var.virtual_machine_name}-os"
     caching           = "ReadWrite"
-    create_option     = "FromImage"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }

@@ -9,3 +9,7 @@ variable "Vnet_Name" {
 variable "location" {
   description = "Location of all the resource will be createds"
 }
+
+variable "Vnet_address" {
+  description = "Address space for Vnet will be provided"
+}

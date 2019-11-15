@@ -9,3 +9,7 @@ variable "subnet_name" {
 variable "subnet_prefix" {
   description = "Subnet Address space will be provided"
 }
+
+variable "Vnet_Name" {
+  description = "Virtual netowrk name will be given"
+}
