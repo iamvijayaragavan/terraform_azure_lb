@@ -65,3 +65,7 @@ variable "frontend_ip_configuration" {
 variable "backendpool_name" {
   description = "Backend pool name will be provided"
 }
+
+variable "azurerm_lb_name" {
+  description = "Azure lb name will be provided"
+}
