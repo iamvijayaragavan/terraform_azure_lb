@@ -38,6 +38,7 @@ module "VM_1" {
   private_ip_address   = "${var.vm-1_private_address}"
   admin_username       = "${var.admin_username}"
   admin_password       = "${var.admin_password}"
+  av_set_id            = "${module.vm_av_set.av_id}"
 }
 
 module "VM_2" {
@@ -51,6 +52,7 @@ module "VM_2" {
   private_ip_address   = "${var.vm-2_private_address}"
   admin_username       = "${var.admin_username}"
   admin_password       = "${var.admin_password}"
+  av_set_id            = "${module.vm_av_set.av_id}"
 }
 
 module "LB_PIP" {

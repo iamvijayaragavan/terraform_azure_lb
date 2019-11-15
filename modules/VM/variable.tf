@@ -33,3 +33,7 @@ variable "admin_password" {
 variable "av_set_name" {
   description = "Availiablity Set name will be provided"
 }
+
+variable "av_set_id" {
+  description = "Avaliablity Set id will be provided"
+}
