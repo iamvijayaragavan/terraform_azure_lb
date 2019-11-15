@@ -1,3 +1,9 @@
+data "azurerm_availability_set" "current" {
+  name                = "${var.av_set_name}"
+  resource_group_name = "${var.resource_group_name}"
+}
+
+
 resource "azurerm_network_interface" "current" {
   name                      = "${var.virtual_machine_name}-nic"
   location                  = "${var.location}"
@@ -17,6 +23,7 @@ resource "azurerm_virtual_machine" "current" {
   resource_group_name   = "${var.resource_group_name}"
   network_interface_ids = ["${azurerm_network_interface.current.id}"]
   vm_size               = "${var.vm_size}"
+  availability_set_id   = "${data.azurerm_availability_set.current.id}"
   delete_os_disk_on_termination = true
 
   storage_image_reference {
